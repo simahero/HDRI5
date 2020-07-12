@@ -1,0 +1,4 @@
+#Sun Jul 12 15:23:36 CEST 2020
+base.0=/home/buzivagyok/Documents/Unity/HDRI5/Temp/gradleOut/launcher/build/intermediates/transforms/dexMerger/release/0
+path.0=classes.dex
+renamed.0=classes.dex
