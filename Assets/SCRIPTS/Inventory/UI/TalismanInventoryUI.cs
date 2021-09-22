@@ -12,12 +12,13 @@ public class TalismanInventoryUI : MonoBehaviour
     void Start()
     {
         inventory = Inventory.instance;
-        inventory.onItemChangedCallback += UpdateUI;
+        inventory.onItemChangedCallback += UpdateTalismanUI;
         slots = parent.GetComponentsInChildren<InventorySlot>();
+        UpdateTalismanUI();
     }
 
 
-    void UpdateUI(){
+    void UpdateTalismanUI(){
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < inventory.talismans.Count)

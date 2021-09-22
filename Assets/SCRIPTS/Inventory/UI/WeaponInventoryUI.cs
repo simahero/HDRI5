@@ -11,11 +11,12 @@ public class WeaponInventoryUI : MonoBehaviour
     void Start()
     {
         inventory = Inventory.instance;
-        inventory.onItemChangedCallback += UpdateUI;
+        inventory.onItemChangedCallback += UpdateWeaponUI;
         slots = parent.GetComponentsInChildren<InventorySlot>();
+        UpdateWeaponUI();
     }
 
-    void UpdateUI(){
+    void UpdateWeaponUI(){
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < inventory.weapons.Count)

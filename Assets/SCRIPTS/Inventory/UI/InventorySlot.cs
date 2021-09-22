@@ -4,8 +4,18 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
+    private EquipmentManager manager;
+    private PlayerLoader loader;
+    private Button slotButton;
     public Image icon;
-    Item item;
+    public Item item;
+
+    void Start(){
+        manager = EquipmentManager.Instance;
+        loader = PlayerLoader.instance;
+        slotButton = GetComponent<Button>();
+        slotButton.onClick.AddListener(EquipItem);
+    }
 
     public void AddItem(Item newitem){
         item = newitem;
@@ -17,5 +27,11 @@ public class InventorySlot : MonoBehaviour
         item = null;
         icon.sprite = null;
         icon.enabled = false;
+    }
+
+    public void EquipItem(){
+        loader.RemoveModifiers();
+        manager.Equip(item);
+        loader.UpdatePlayer();
     }
 }

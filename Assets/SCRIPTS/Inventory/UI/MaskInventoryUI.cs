@@ -11,12 +11,13 @@ public class MaskInventoryUI : MonoBehaviour
     void Start()
     {
         inventory = Inventory.instance;
-        inventory.onItemChangedCallback += UpdateUI;
+        inventory.onItemChangedCallback += UpdateMaskUI;
         slots = parent.GetComponentsInChildren<InventorySlot>();
+        UpdateMaskUI();
     }
 
 
-    void UpdateUI(){
+    void UpdateMaskUI(){
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < inventory.masks.Count)

@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
 {
 
 public GameObject player;
-public float h = 30f;
-public float b = 30f;
+public float h = 12f;
+public float b = 13f;
 
     void  Start(){
         player = GameObject.FindGameObjectWithTag("Player");

@@ -6,6 +6,12 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
 
+    public Transform firepoint;
+    public GameObject prefab;
+    public float bulletforce = 20f;
+    public float fr = 1;
+    private float nextFire = 0f;
+
     public float lookRadius = 10f;
     Transform target;
     NavMeshAgent agent;
@@ -28,17 +34,25 @@ public class EnemyController : MonoBehaviour
 
             if (distance <= agent.stoppingDistance)
             {
-                //attack
                 FaceTarget();
+                Shoot();
             }
         }
 
+    }
+
+    void Shoot(){
+    	GameObject bullet = Instantiate(prefab, firepoint.position, firepoint.rotation);
+        bullet.GetComponent<Bullet>().setOwner(firepoint.root.gameObject);
+    	Rigidbody rb = bullet.GetComponent<Rigidbody>();
+    	rb.AddForce(firepoint.forward * bulletforce, ForceMode.Impulse);
     }
 
     void FaceTarget(){
         Vector3 dir = (target.position - transform.position).normalized;
         Quaternion lookRot = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, 5f * Time.deltaTime);
+        firepoint.transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, 5f * Time.deltaTime);
     }
 
     void OnDrawGizmosSelected() {

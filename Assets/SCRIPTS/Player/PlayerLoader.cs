@@ -44,5 +44,63 @@ public class PlayerLoader : MonoBehaviour
         }
 
     }
+
+    public void RemoveModifiers(){
+        if (manager.maskSlot != null)
+        {
+            statManager.health.RemoveModifier(manager.maskSlot.health);
+            statManager.armor.RemoveModifier(manager.maskSlot.armor);
+        }
+
+        if (manager.weaponSlot != null)
+        {
+            statManager.damage.RemoveModifier(manager.weaponSlot.damage);
+            statManager.fireRate.RemoveModifier(manager.weaponSlot.fireRate);
+        }
+
+        if(manager.talismanSlot != null){
+            statManager.health.RemoveModifier(manager.talismanSlot.health);
+            statManager.damage.RemoveModifier(manager.talismanSlot.damage);
+            statManager.armor.RemoveModifier(manager.talismanSlot.armor);
+            statManager.fireRate.RemoveModifier(manager.talismanSlot.fireRate);
+            statManager.movenentSpeed.RemoveModifier(manager.talismanSlot.movementSpeed);
+
+        }
+    }
+
+    public void UpdatePlayer(){
+        if (manager.maskSlot != null)
+        {
+            foreach (Transform child in maskHolder.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            GameObject mask = Instantiate(manager.maskSlot.prefab, maskHolder.transform.position, maskHolder.transform.rotation);
+            mask.transform.SetParent(maskHolder.transform);
+            statManager.health.AddModifier(manager.maskSlot.health);
+            statManager.armor.AddModifier(manager.maskSlot.armor);
+        }
+
+        if (manager.weaponSlot != null)
+        {
+            foreach (Transform child in weaponHolder.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            GameObject weapon = Instantiate(manager.weaponSlot.prefab, weaponHolder.transform.position, weaponHolder.transform.rotation);
+            weapon.transform.SetParent(weaponHolder.transform);
+            statManager.damage.AddModifier(manager.weaponSlot.damage);
+            statManager.fireRate.AddModifier(manager.weaponSlot.fireRate);
+        }
+
+        if(manager.talismanSlot != null){
+            statManager.health.AddModifier(manager.talismanSlot.health);
+            statManager.damage.AddModifier(manager.talismanSlot.damage);
+            statManager.armor.AddModifier(manager.talismanSlot.armor);
+            statManager.fireRate.AddModifier(manager.talismanSlot.fireRate);
+            statManager.movenentSpeed.AddModifier(manager.talismanSlot.movementSpeed);
+
+        }
+    }
     
 }

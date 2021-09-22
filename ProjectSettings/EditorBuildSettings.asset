@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Start.unity
+    path: Assets/SCENES/Start.unity
     guid: 16fd855cff1b3b03d8b3bfdf4b98dac0
   - enabled: 1
-    path: Assets/Scenes/PROTOTYPE.unity
+    path: Assets/SCENES/PVP ARENA/DungeonArena.unity
+    guid: 6cce47facc7840773aa56b3b3f2b785d
+  - enabled: 1
+    path: Assets/SCENES/PROTOTYPE.unity
     guid: 154773d44b93b358b9699021985cc232
   - enabled: 1
-    path: Assets/Scenes/New Scene.unity
+    path: Assets/SCENES/New Scene.unity
     guid: 3207a1bba708196c0b74f86279e3f4c1
   m_configObjects: {}
